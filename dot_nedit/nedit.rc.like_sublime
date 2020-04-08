@@ -1,0 +1,237 @@
+! Preferences file for NEdit
+!
+! This file is overwritten by the "Save Defaults..." command in NEdit 
+! and serves only the interactively settable options presented in the NEdit
+! "Preferences" menu.  To modify other options, such as key bindings, use 
+! the .Xdefaults file in your home directory (or the X resource 
+! specification method appropriate to your system).  The contents of this 
+! file can be moved into an X resource file, but since resources in this file
+! override their corresponding X resources, either this file should be 
+! deleted or individual resource lines in the file should be deleted for the
+! moved lines to take effect.
+
+nedit.fileVersion: 5.5
+nedit.shellCommands: \
+	spell:Alt+B:s:ED:\n\
+		(cat;echo "") | spell\n\
+	wc::w:ED:\n\
+		wc | awk '{print $1 " lines, " $2 " words, " $3 " characters"}'\n\
+	sort::o:EX:\n\
+		sort\n\
+	number lines::n:AW:\n\
+		nl -ba\n\
+	make:Alt+Z:m:W:\n\
+		make\n\
+	expand::p:EX:\n\
+		expand\n\
+	unexpand::u:EX:\n\
+		unexpand\n
+nedit.macroCommands: \
+	+ # Comment:::: {\n\
+		                              replace-in-selection("^.*$", "# &", "regex")\n\
+		               \n\
+	}\n\
+	- # Comment:::: {\n\
+		                              replace-in-selection("(^# )(.*)$", "\\\\2", "regex")\n\
+		               \n\
+	}\n\
+	+ // Comment:::: {\n\
+		                              replace-in-selection("^.*$", "// &", "regex")\n\
+		               \n\
+	}\n\
+	- // Comment:::: {\n\
+		                              replace-in-selection("(^// )(.*)$", "\\\\\\\\2", "regex")\n\
+		               \n\
+	}\n
+nedit.bgMenuCommands: \
+	Undo:::: {\n\
+		 undo()\n\
+		 }\n\
+	Redo:::: {\n\
+		 redo()\n\
+		 }\n\
+	Cut:::R: {\n\
+		 cut_clipboard()\n\
+		 }\n\
+	Copy:::R: {\n\
+		 copy_clipboard()\n\
+		 }\n\
+	Paste:::: {\n\
+		paste_clipboard()\n\
+	}\n
+nedit.highlightPatterns: Ada:Default\n\
+	Awk:Default\n\
+	C++:Default\n\
+	C:Default\n\
+	CSS:Default\n\
+	Csh:Default\n\
+	Fortran:Default\n\
+	Java:Default\n\
+	JavaScript:Default\n\
+	LaTeX:Default\n\
+	Lex:Default\n\
+	Makefile:Default\n\
+	Matlab:Default\n\
+	NEdit Macro:Default\n\
+	Pascal:Default\n\
+	Perl:Default\n\
+	PostScript:Default\n\
+	Python:Default\n\
+	Regex:Default\n\
+	SGML HTML:Default\n\
+	SQL:Default\n\
+	Sh Ksh Bash:Default\n\
+	Tcl:1:0{\n\
+		Double Quote String:"""":""""::String::\n\
+		Single Quote String:"'":"'":"[^\\\\][^']":String::\n\
+		Ignore Escaped Chars:"\\\\(.|\\n)":::Plain::\n\
+		Variable Ref:"\\$\\w+|\\$\\{[^}]*}|\\$|#auto":::Identifier1::\n\
+		Comment:"#":"$"::Comment::\n\
+		Keywords:"<(after\\s+(\\d+|cancel|idle|info)?|append|array\\s+(anymore|donesearch|exists|get|names|nextelement|set|unset|size|startsearch|unset)|bell|bgerror|binary\\s+(format|scan)|bind(tags)?|body|break|case|catch|cd|class|clipboard\\s+(clear|append)|clock\\s+(clicks|format|scan|seconds)|close|code|common|concat|configbody|constructor|continue|delete\\s+(class|object|namespace)|destroy|destructor|else|elseif|encoding\\s+(convertfrom|convertto|names|system)|ensemble|eof|error|eval|event\\s+(add|delete|generate|info)|exec|exit|expr|fblocked|fconfigure|fcopy|file\\s+(atime|attributes|channels|copy|delete|dirname|executable|exists|extension|isdirectory|isfile|join|lstat|mkdir|mtime|nativename|owned|pathtype|readable|readlink|rename|rootname|size|split|stat|tail|type|volume|writable)|fileevent|find\\s+(classes|objects)|flush|focus|font\\s+(actual|configure|create|delete|families|measure|metrics|names)|foreach|format|gets|glob(al)?|grab\\s+(current|release|set|status|(-global\\s+)?\\w+)|grid(\\s+bbox|(column|row)?configure|forget|info|location|propagate|remove|size|slaves)?|history\\s+(add|change|clear|event|info|keep|nextid|redo)|if|image\\s+(create|delete|height|names|type|width)|incr|info\\s+(args|body|cmdcount|commands|complete|default|exists|globals|hostname|level|library|loaded|locals|nameofexecutable|patchlevel|procs|script|sharedlibextension|tclversion|vars)|inherit|interp\\s+(alias(es)?|create|delete|eval|exists|expose|hide|hidden|invokehidden|issafe|marktrusted|share|slaves|target|transfer)|join|lappend|lindex|linsert|list|llength|load|local|lrange|lreplace|lsearch|lsort|method|memory\\s+(info|(trace|validate)\\s+(on|off)|trace_on_at_malloc|break_on_malloc|display)|namespace\\s+(children|code|current|delete|eval|export|forget|import|inscope|origin|parent|qualifiers|tail|which)|open|option\\s+(add|clear|get|read(file))|pack\\s+(configure|forget|info|propagate|slaves)?|package\\s+(forget|ifneeded|names|present|provide|require|unknown|vcompare|versions|vsatisfies)|pid|place\\s+(configure|forget|info|slaves)?|proc|puts|pwd|raise|read|regexp|regsub|rename|resource\\s+(close|delete|files|list|open|read|types|write)|return|scan|scope(dobject)?|seek|selection\\s+(clear|get|handle|own)|send|set|socket|source|split|string\\s+(bytelength|compare|equal|first|index|is|last|length|map|match|range|repeat|replace|tolower|totitle|toupper|trim|trimleft|trimright|wordend|wordstart)|subst|switch|tell|time|tk\\s+(appname|scaling|useinputmethods)|tk_(bindForTraversal|bisque|chooseColor|chooseDirectory|dialog|focusFollowsMouse|focusNext|focusPrev|getOpenFile|getSaveFile|menuBar|messageBox|optionMenu|popup|setPalette)|tkerror|tkwait\\s+(variable|visibility|window)|trace\\s+(variable|vdelete|vinfo)|unknown|unset|update|uplevel|upvar|usual|variable|while|winfo\\s+(atom|atomname|cells|children|class|colormapfull|containing|depth|exists|fpixels|geometry|height|id|interp|ismapped|manager|name|parent|pathname|pixels|pointerx|pointerxy|pointery|reqheight|reqwidth|rgb|rootx|rooty|screen(cells|depth|height|mmheigth|mmidth|visual|width)?|server|toplevel|viewable|visual(id|savailable)?|vroot(height|width|x|y)|width|x|y)|wm\\s+(aspect|client|colormapwindows|command|deiconify|focusmodel|frame|geometry|grid|group|iconbitmap|icon(ify|mask|name|position|window)|(max|min)size|overrideredirect|positionfrom|protocol|resizable|sizefrom|state|title|transient|withdraw))(?!\\Y)":::Keyword::D\n\
+		Widgets:"<(button(box){0,1}|calendar|canvas(printbox|printdialog){0,1}|check(box|button)|combobox|date(entry|field)|dialog(shell){0,1}|entry(field){0,1}|(ext){0,1}fileselection(box|dialog)|feedback|finddialog|frame|hierarchy|hyperhelp|label(edframe|edwidget){0,1}|listbox|mainwindow|menu(bar|button){0,1}|message(box|dialog){0,1}|notebook|optionmenu|panedwindow|promptdialog|pushbutton|radio(box|button)|scale|scrollbar|scrolled(canvas|frame|html|listbox|text)|selection(box|dialog)|shell|spin(date|int|ner|time)|tab(notebook|set)|text|time(entry|field)|toolbar|toplevel|watch)>":::Identifier::\n\
+		Braces and Brackets:"[\\[\\]{}]":::Keyword::D\n\
+		DQ String Esc Chars:"\\\\(.|\\n)":::String1:Double Quote String:\n\
+		SQ String Esc Chars:"\\\\(.|\\n)":::String1:Single Quote String:\n\
+		Variable in String:"\\$\\w+|\\$\\{[^}]*}|\\$":::Identifier1:Double Quote String:\n\
+		Storage:"<(public|private|protected)>":::Storage Type::\n\
+		Namespace:"\\w+::":::Keyword::\n\
+	}\n\
+	VHDL:Default\n\
+	Verilog:Default\n\
+	XML:Default\n\
+	X Resources:Default\n\
+	Yacc:Default\n\
+	SystemVerilog:1:0{\n\
+		Comment:"/\\*":"\\*/"::Comment::\n\
+		cplus comment:"//":"$"::Comment::\n\
+		String Literals:"""":"""":"\\n":String::\n\
+		preprocessor line:"^[ ]*`":"$"::Preprocessor::\n\
+		Reserved WordsA:"(?<!\\Y)(alias|always|always_comb|always_ff|always_latch|assert|assert_strobe|assign|assume|automatic|attribute|before|begin|bind|bins|binsof|break|case|case[xz]|clocking|config|constraint|context|continue|cover|covergroup|coverpoint|cross|deassign|defparam|default|design|dist|do|else|end|endattribute|endcase|endclass|endclocking|endconfig|endfunction|endgenerate|endgroup|endinterface|endmodule|endpackage|endprimitive|endprogram|endproperty|endspecify|endsequence|endtable|endtask|expect|export|extends|extern|final|first_match|for|force|foreach|fork|forkjoin|forever|function|generate|genvar|if|iff|ifnone|ignore_bins|illegal_bins|import|incdir|include|initial|inside|instance|interface|intersect|join|join_any|join_none|liblist|library|local|localparam|matches|module|modport|new|noshowcancelled|null|package|parameter|primitive|priority|program|property|protected|pulsestyle_onevent|pulsestyle_ondetect|pure|rand|randc|randcase|randsequence|release|return|sequence|showcancelled|solve|specify|super|table|task|this|throughout|timeprecision|timeunit|type|typedef|unique|use|wait|wait_order|while|wildcard|with|within|;)(?!\\Y)":::Keyword::\n\
+		Predefined Types:"<(and|bit|buf|bufif[01]|byte|cell|chandle|class|cmos|const|disable|edge|enum|event|highz[01]|initial|inout|input|int|integer|join|large|logic|longint|macromodule|medium|nand|negedge|nmos|nor|not|notif[01]|or|output|packed|parameter|pmos|posedge|pull[01]|pulldown|pullup|rcmos|real|realtime|ref|reg|repeat|rnmos|rpmos|rtran|rtranif[01]|scalared|shortint|shortreal|signed|small|specparam|static|string|strength|strong[01]|struct|supply[01]|tagged|time|tran|tranif[01]|tri[01]?|triand|trior|trireg|union|unsigned|uwire|var|vectored|virtual|void|wait|wand|weak[01]|wire|wor|xnor|xor)>":::Storage Type::D\n\
+		System Functions:"\\$[a-z_]+":::Subroutine::D\n\
+		Numeric Literals:"(?<!\\Y)([0-9]*'[dD][0-9xz\\\\?_]+|[0-9]*'[hH][0-9a-fxz\\\\?_]+|[0-9]*'[oO][0-7xz\\\\?_]+|[0-9]*'[bB][01xz\\\\?_]+|[0-9.]+((e|E)(\\\\+|-)?)?[0-9]*|[0-9]+)(?!\\Y)":::Numeric Const::\n\
+		Delay Word:"(?<!\\Y)((#\\(.*\\))|(#[0-9]*))(?!\\Y)":::Ada Attributes::D\n\
+		Simple Word:"([a-zA-Z][a-zA-Z0-9]*)":::Plain::D\n\
+		Instance Declaration:"([a-zA-Z][a-zA-Z0-9_]*)([ \\t]+)([a-zA-Z][a-zA-Z0-9_$]*)([ \\t]*)\\(":::Plain::\n\
+		Module name:"\\1":""::Identifier:Instance Declaration:C\n\
+		Instance Name:"\\3":""::Identifier1:Instance Declaration:C\n\
+		Pins Declaration:"(?<!\\Y)(\\.([a-zA-Z0-9_]+))>":::Storage Type1::\n\
+		Special Chars:"(\\{|\\}|,|;|=|\\.)":::Keyword::\n\
+	}
+nedit.languageModes: 	Ada:.ada .ad .ads .adb .a:::::::\n\
+	Awk:.awk:::::::\n\
+	C++:.cc .hh .C .H .i .cxx .hxx .cpp .c++::::::".,/\\`'!|@#%^&*()-=+{}[]"":;<>?~":\n\
+	C:.c .h::::::".,/\\`'!|@#%^&*()-=+{}[]"":;<>?~":\n\
+	CSS:css::Auto:None:::".,/\\`'!|@#%^&*()=+{}[]"":;<>?~":\n\
+	Csh:.csh .cshrc .login .logout:"^[ \\t]*#[ \\t]*![ \\t]*/bin/csh"::::::\n\
+	Fortran:.f .f77 .for:::::::\n\
+	Java:.java:::::::\n\
+	JavaScript:.js:::::::\n\
+	LaTeX:.tex .sty .cls .ltx .ins:::::::\n\
+	Lex:.lex:::::::\n\
+	Makefile:Makefile makefile .gmk .mk:::None:8:8::\n\
+	Matlab:.m .oct .sci:::::::\n\
+	NEdit Macro:.nm .neditmacro:::::::\n\
+	Pascal:.pas .p .int:::::::\n\
+	Perl:.pl .pm .p5 .PL:"^[ \\t]*#[ \\t]*!.*perl":Auto:None:::".,/\\\\`'!$@#%^&*()-=+{}[]"":;<>?~|":\n\
+	PostScript:.ps .eps .epsf .epsi:"^%!":::::"/%(){}[]<>":\n\
+	Python:.py:"^#!.*python":Auto:None:::"!""#$%&'()*+,-./:;<=>?@[\\\\]^`{|}~":\n\
+	Regex:.reg .regex:"\\(\\?[:#=!iInN].+\\)":None:Continuous::::\n\
+	SGML HTML:.sgml .sgm .html .htm:"\\<[Hh][Tt][Mm][Ll]\\>"::::::\n\
+	SQL:.sql:::::::\n\
+	Sh Ksh Bash:.sh .bash .ksh .profile .bashrc .bash_logout .bash_login .bash_profile:"^[ \\t]*#[ \\t]*![ \\t]*/.*bin/(bash|ksh|sh|zsh)"::::::\n\
+	Tcl:.tcl .tk .itcl .itk .sdc .config .do .cfg::Smart:None::::\n\
+	VHDL:.vhd .vhdl .vdl:::::::\n\
+	Verilog:.f .v .vg .spec:::::::\n\
+	XML:.xml .xsl .dtd:"\\<(?i\\?xml|!doctype)"::None:::"<>/=""'()+*?|":\n\
+	X Resources:.Xresources .Xdefaults .nedit:"^[!#].*([Aa]pp|[Xx]).*[Dd]efaults"::::::\n\
+	Yacc:.y::::::".,/\\`'!|@#%^&*()-=+{}[]"":;<>?~":\n\
+	SystemVerilog:.sv .sv09 .svh .tmpl:::::::
+nedit.styles: 	Plain:gainsboro:Plain\n\
+	Comment:seaGreen:Italic\n\
+	Keyword:dodgerBlue:Bold\n\
+	Storage Type:brown:Bold\n\
+	Storage Type1:saddle brown:Bold\n\
+	String:Pink:Plain\n\
+	String1:SeaGreen:Plain\n\
+	String2:Pink:Bold\n\
+	Preprocessor:orange:Plain\n\
+	Preprocessor1:blue:Plain\n\
+	Character Const:Pink:Plain\n\
+	Numeric Const:Pink:Plain\n\
+	Identifier:brown:Plain\n\
+	Identifier1:orange:Plain\n\
+	Identifier2:SteelBlue:Plain\n\
+	Subroutine:brown:Plain\n\
+	Subroutine1:chocolate:Plain\n\
+	Ada Attributes:plum:Bold\n\
+	Label:red:Italic\n\
+	Flag:red:Bold\n\
+	Text Comment:SteelBlue4:Italic\n\
+	Text Key:VioletRed4:Bold\n\
+	Text Key1:VioletRed4:Plain\n\
+	Text Arg:RoyalBlue4:Bold\n\
+	Text Arg1:SteelBlue4:Bold\n\
+	Text Arg2:RoyalBlue4:Plain\n\
+	Text Escape:grey30:Bold\n\
+	LaTeX Math:Pink:Plain\n\
+	Pointer:#660000:Bold\n\
+	Regex:#009944:Bold\n\
+	Warning:brown2:Italic
+nedit.smartIndentInit: 	C:Default\n\
+	C++:Default\n\
+	Python:Default\n\
+	Matlab:Default
+nedit.smartIndentInitCommon: Default
+nedit.autoWrap: Newline
+nedit.wrapMargin: 0
+nedit.autoIndent: Auto
+nedit.autoSave: True
+nedit.openInTab: True
+nedit.saveOldVersion: False
+nedit.showMatching: Delimiter
+nedit.matchSyntaxBased: True
+nedit.highlightSyntax: True
+nedit.backlightChars: False
+nedit.searchDialogs: False
+nedit.beepOnSearchWrap: False
+nedit.retainSearchDialogs: False
+nedit.searchWraps: True
+nedit.stickyCaseSenseButton: True
+nedit.repositionDialogs: True
+nedit.autoScroll: False
+nedit.appendLF: True
+nedit.sortOpenPrevMenu: True
+nedit.statisticsLine: False
+nedit.iSearchLine: False
+nedit.sortTabs: False
+nedit.tabBar: True
+nedit.tabBarHideOne: True
+nedit.toolTips: True
+nedit.globalTabNavigate: False
+nedit.lineNumbers: True
+nedit.pathInWindowsMenu: True
+nedit.warnFileMods: True
+nedit.warnRealFileMods: True
+nedit.warnExit: True
+nedit.searchMethod: Literal
+nedit.textRows: 30
+nedit.textCols: 120
+nedit.tabDistance: 2
+nedit.emulateTabs: 2
+nedit.insertTabs: False
+nedit.textFont: -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso8859-9
+nedit.boldHighlightFont: -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso8859-9
+nedit.italicHighlightFont: -xos4-terminus-bold-o-normal--12-120-72-72-c-60-iso8859-9
+nedit.boldItalicHighlightFont: -xos4-terminus-bold-o-normal--12-120-72-72-c-60-iso8859-9
+nedit.textFgColor: gray
+nedit.textBgColor: LightBlack
+nedit.selectFgColor: white
+nedit.selectBgColor: #77074F
+nedit.hiliteFgColor: white
+nedit.hiliteBgColor: red
+nedit.lineNoFgColor: dim Gray
+nedit.cursorFgColor: White
+nedit.smartTags: True
+nedit.prefFileRead: True
+nedit.titleFormat: {%c} [%s] %f (%S) - %d

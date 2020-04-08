@@ -140,7 +140,7 @@ nedit.languageModes: 	Ada:.ada .ad .ads .adb .a:::::::\n\
 	SGML HTML:.sgml .sgm .html .htm:"\\<[Hh][Tt][Mm][Ll]\\>"::::::\n\
 	SQL:.sql:::::::\n\
 	Sh Ksh Bash:.sh .bash .ksh .profile .bashrc .bash_logout .bash_login .bash_profile:"^[ \\t]*#[ \\t]*![ \\t]*/.*bin/(bash|ksh|sh|zsh)"::::::\n\
-	Tcl:.tcl .tk .itcl .itk .sdc .config .do .cfg::Smart:None::::\n\
+	Tcl:.tcl .tk .itcl .itk .sdc .config .do ::Smart:None::::\n\
 	VHDL:.vhd .vhdl .vdl:::::::\n\
 	Verilog:.f .v .vg .spec .proc:::::::\n\
 	XML:.xml .xsl .dtd:"\\<(?i\\?xml|!doctype)"::None:::"<>/=""'()+*?|":\n\

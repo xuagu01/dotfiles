@@ -1,1 +1,1 @@
-# dotfiles
+# Saved some legacy nedit configuration
